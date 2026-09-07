@@ -22,8 +22,23 @@
         android:name="com.vu.nit3213finalproject.ui.dashboard.DashboardFragment"
         android:label="Dashboard">
 
+        <action
+            android:id="@+id/action_dashboardFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+
         <argument
             android:name="keypass"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.vu.nit3213finalproject.ui.details.DetailsFragment"
+        android:label="Details">
+
+        <argument
+            android:name="entityJson"
             app:argType="string" />
 
     </fragment>

@@ -12,6 +12,9 @@ import com.vu.nit3213finalproject.R
 import com.vu.nit3213finalproject.databinding.FragmentDashboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
+import org.json.JSONObject
 
 @AndroidEntryPoint
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
@@ -46,8 +49,18 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     }
 
     private fun setupRecyclerView() {
+
         entityAdapter = EntityAdapter { entity ->
-            // Details navigation will be added next
+
+            val entityJson = JSONObject(entity).toString()
+
+            findNavController().navigate(
+                R.id.action_dashboardFragment_to_detailsFragment,
+                bundleOf(
+                    "entityJson" to entityJson
+                ),
+                null
+            )
         }
 
         binding.recyclerViewEntities.adapter = entityAdapter
