@@ -9,23 +9,21 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import android.util.Log
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository
 ) : ViewModel() {
 
-    private val _loginState =
-        MutableStateFlow<LoginUiState>(LoginUiState.Idle)
+    private val _loginState = MutableStateFlow<LoginUiState>(LoginUiState.Idle)
 
-    val loginState: StateFlow<LoginUiState> =
-        _loginState.asStateFlow()
+    val loginState: StateFlow<LoginUiState> = _loginState.asStateFlow()
 
     fun login(username: String, password: String) {
 
         if (username.isBlank() || password.isBlank()) {
-            _loginState.value =
-                LoginUiState.Error("Username and password are required.")
+            _loginState.value = LoginUiState.Error("Username and password are required.")
             return
         }
 
@@ -34,18 +32,20 @@ class LoginViewModel @Inject constructor(
 
             try {
                 val response = loginRepository.login(
-                    username = username,
-                    password = password
+                    username = username, password = password
                 )
 
-                _loginState.value =
-                    LoginUiState.Success(response.keypass)
+                _loginState.value = LoginUiState.Success(response.keypass)
 
             } catch (exception: Exception) {
-                _loginState.value =
-                    LoginUiState.Error(
-                        "Login failed. Please check your credentials."
-                    )
+
+                Log.e(
+                    "LoginViewModel", "Login failed", exception
+                )
+
+                _loginState.value = LoginUiState.Error(
+                    "Login failed. Please check your credentials."
+                )
             }
         }
     }
