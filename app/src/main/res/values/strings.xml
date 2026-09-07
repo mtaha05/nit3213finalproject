@@ -5,8 +5,9 @@
 
     <string name="login_title">Welcome</string>
     <string name="login_subtitle">Sign in to continue</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
+    <string name="username">Student ID</string>
+    <string name="password">First Name</string>
     <string name="login_button">Login</string>
-    <string name="login_error">Unable to login. Please check your details.</string>
+    <string name="login_error">Login failed. Please check your credentials.</string>
+    <string name="dashboard_title">Dashboard</string>
 </resources>
