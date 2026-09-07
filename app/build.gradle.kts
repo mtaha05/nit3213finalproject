@@ -59,9 +59,15 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // Retrofit API networking
+    // Retrofit networking
     implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
+    implementation(libs.retrofit.moshi)
+
+// JSON conversion
+    implementation(libs.moshi.kotlin)
+
+// Network logging
+    implementation(libs.okhttp.logging.interceptor)
 
     // Hilt dependency injection
     implementation(libs.hilt.android)
