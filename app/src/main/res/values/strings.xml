@@ -10,4 +10,5 @@
     <string name="login_button">Login</string>
     <string name="login_error">Login failed. Please check your credentials.</string>
     <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_error">Unable to load dashboard data.</string>
 </resources>
