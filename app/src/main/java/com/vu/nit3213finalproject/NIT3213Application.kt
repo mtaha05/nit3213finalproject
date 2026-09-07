@@ -1,0 +1,7 @@
+package com.vu.nit3213finalproject
+
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class NIT3213Application : Application()
