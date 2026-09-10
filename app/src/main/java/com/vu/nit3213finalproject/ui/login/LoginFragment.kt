@@ -2,7 +2,6 @@ package com.vu.nit3213finalproject.ui.login
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -76,11 +75,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             binding.loginProgressBar.isVisible = false
                             binding.buttonLogin.isEnabled = true
 
+                            val args = Bundle().apply {
+                                putString("keypass", state.keypass)
+                            }
+
                             findNavController().navigate(
                                 R.id.action_loginFragment_to_dashboardFragment,
-                                bundleOf(
-                                    "keypass" to state.keypass
-                                ),
+                                args,
                                 null
                             )
                         }

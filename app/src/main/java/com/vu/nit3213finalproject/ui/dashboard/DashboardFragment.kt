@@ -12,7 +12,6 @@ import com.vu.nit3213finalproject.R
 import com.vu.nit3213finalproject.databinding.FragmentDashboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import org.json.JSONObject
 
@@ -54,11 +53,13 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
             val entityJson = JSONObject(entity).toString()
 
+            val args = Bundle().apply {
+                putString("entityJson", entityJson)
+            }
+
             findNavController().navigate(
                 R.id.action_dashboardFragment_to_detailsFragment,
-                bundleOf(
-                    "entityJson" to entityJson
-                ),
+                args,
                 null
             )
         }
