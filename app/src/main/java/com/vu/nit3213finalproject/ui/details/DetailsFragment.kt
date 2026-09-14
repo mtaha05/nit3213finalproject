@@ -49,10 +49,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
     private fun formatKey(key: String): String {
-        return key
-            .replace("_", " ")
-            .replaceFirstChar { it.uppercase() }
-    }
+    return key
+        .replace("_", " ")
+        .replace(Regex("([a-z])([A-Z])"), "$1 $2")
+        .replaceFirstChar { it.uppercase() }
+}
 
     override fun onDestroyView() {
         super.onDestroyView()

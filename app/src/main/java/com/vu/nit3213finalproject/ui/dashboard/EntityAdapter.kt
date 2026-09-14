@@ -58,7 +58,7 @@ class EntityAdapter(
                 summaryProperties.entries
                     .drop(1)
                     .joinToString("\n") { entry ->
-                        "${formatKey(entry.key)}: ${entry.value}"
+                        "${formatKey(entry.key)}: ${formatValue(entry.value)}"
                     }
 
             binding.root.setOnClickListener {
@@ -69,7 +69,22 @@ class EntityAdapter(
         private fun formatKey(key: String): String {
             return key
                 .replace("_", " ")
+                .replace(Regex("([a-z])([A-Z])"), "$1 $2")
                 .replaceFirstChar { it.uppercase() }
+        }
+
+        private fun formatValue(value: Any?): String {
+            return when (value) {
+                is Double -> {
+                    if (value % 1.0 == 0.0) {
+                        value.toInt().toString()
+                    } else {
+                        value.toString()
+                    }
+                }
+
+                else -> value?.toString() ?: ""
+            }
         }
     }
 }

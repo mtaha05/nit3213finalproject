@@ -4,8 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="login_title">Welcome</string>
-    <string name="login_subtitle">Sign in to continue</string>
-    <string name="username">Student ID</string>
+    <string name="login_subtitle">Sign in with your student details</string>
+    <string name="username">Student ID (without s)</string>
     <string name="password">First Name</string>
     <string name="login_button">Login</string>
     <string name="login_error">Login failed. Please check your credentials.</string>
